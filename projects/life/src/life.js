@@ -1,7 +1,7 @@
 /**
  * Implementation of Conway's game of Life
  */
-
+const MODULO = 2;
 /**
  * Make a 2D array helper function
  */
@@ -26,6 +26,18 @@ class Life {
    */
   constructor(width, height) {
     // !!!! IMPLEMENT ME !!!!
+    this.width = width;
+    this.height = height;
+
+    this.currentBufferIndex = 0; 
+
+    this.cells = [
+      Array2D(width, height),
+      Array2D(width, height)
+    ];
+
+    this.randomize();
+    this.clear();
   }
   
   /**
@@ -34,6 +46,7 @@ class Life {
    * This should NOT be modified by the caller
    */
   getCells() {
+    return this.cells[this.currentBufferIndex];
     // !!!! IMPLEMENT ME !!!!
   }
 
@@ -48,15 +61,36 @@ class Life {
    * Randomize the life grid
    */
   randomize() {
+    for(let height = 0; height < this.height; height++){
+      for(let width = 0; width < this.width; width++){
+        this.cells[this.currentBufferIndex][height][width] = (Math.random() * MODULO) | 0;
+      }
     // !!!! IMPLEMENT ME !!!!
   }
+}
 
   /**
    * Run the simulation for a single step
    */
   step() {
+    const currentBuffer = this.getCells(); 
+    const nextBuffer = this.cells[this.currentBufferIndex === 0 ? 1 : 0];
+    for(let height = 0; height < this.height; height++){
+      for(let width = 0; width < this.width; width++){
+
+      }
+    } 
+
+
     // !!!! IMPLEMENT ME !!!!
   }
+liveNeighborCount(h,w){
+  const currentBuffer = this.getCells();
+  let count = 0; 
 }
+
+}
+
+
 
 export default Life;

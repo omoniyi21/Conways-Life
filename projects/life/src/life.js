@@ -77,16 +77,31 @@ class Life {
     const nextBuffer = this.cells[this.currentBufferIndex === 0 ? 1 : 0];
     for(let height = 0; height < this.height; height++){
       for(let width = 0; width < this.width; width++){
-
+          const count = this.liveNeighborCount(height,width);
+        //RULES HERE *hint* if else & nextBuffer rmbr 
       }
+
     } 
 
 
     // !!!! IMPLEMENT ME !!!!
+    //this.currentBufferIndex = this.currentBufferIndex === 0 ? 1 : 0;
   }
 liveNeighborCount(h,w){
   const currentBuffer = this.getCells();
   let count = 0; 
+
+  if (currentBuffer[h - 1] && currentBuffer[h - 1][w - 1]) ++count;
+  if (currentBuffer[h - 1] && currentBuffer[h - 1][w - 0]) ++count;
+  if (currentBuffer[h - 1] && currentBuffer[h - 1][w + 1]) ++count;
+  if (currentBuffer[h - 0] && currentBuffer[h - 0][w - 1]) ++count;
+  if (currentBuffer[h - 0] && currentBuffer[h - 0][w + 1]) ++count;
+  if (currentBuffer[h + 1] && currentBuffer[h + 1][w - 1]) ++count;
+  if (currentBuffer[h + 1] && currentBuffer[h + 1][w - 0]) ++count;
+  if (currentBuffer[h + 1] && currentBuffer[h + 1][w + 1]) ++count;
+
+  return count;
+  
 }
 
 }
